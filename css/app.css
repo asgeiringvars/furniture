@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  background: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+button {
+  width: 100%;
+  height: 3rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  color: white;
+  /* background: rgb(168, 129, 55); */
+}
+header {
+  display: grid;
+  grid-template-columns: 10fr 100fr 20fr 20fr 50fr 50fr auto;
+  grid-gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+  height: 7rem;
+  padding: 0 20%;
+  font-size: 1.3rem;
+  /* background: gray; */
+}
+#domain {
+  font-size: 1.5rem;
+}
+svg {
+  margin-top: 5px;
+  width: 2rem;
+}
+div#items {
+  display: grid;
+  grid-template-columns: repeat(3, 10fr);
+  grid-gap: 1rem;
+  padding: 0 20% 1rem 20%;
+}
+div.item {
+  /* min-height: 0; */
+  display: grid;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding-bottom: 10px;
+}
+div.buttons {
+  display: grid;
+  grid-template-columns: 75fr 100fr;
+  /* grid-gap: 0.1rem; */
+}
+button.more {
+  background: rgba(168, 129, 55, 0.8);
+}
+button.buy {
+  background: rgba(168, 129, 55, 1);
+}
+footer {
+  display: grid;
+  grid-template-columns: 100fr auto;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding: 2rem 25%;
+  /* text-align: right; */
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.description {
+  height: 2rem;
+}

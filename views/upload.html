@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input name="my_file" type="file">
+    <button>upload</button>
+  </form> -->
+
+    <form id="frm" onsubmit="upload_form(); return false">
+      <input name="my_file" type="file" onchange="showFile()" />
+      <button>upload</button>
+    </form>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+      async function upload_form() {
+        const server = await fetch("/upload", {
+          method: "POST",
+          body: new FormData(document.querySelector("#frm")),
+        });
+        // Check is the server is listening
+        console.log(server.status);
+        if (!server.ok) {
+          swal("Sorry", "You must choose a file to upload", "error");
+          return;
+        }
+
+        // What is the server responding with?
+        let response = await server.text();
+        console.log(response);
+        swal("File Uploaded", "Thank you", "success");
+      }
+
+      // Check for the various File API support.
+      function showFile() {
+        document.querySelectorAll("img").forEach((element) => {
+          element.remove();
+        });
+
+        console.log(event.target);
+        let thumbnail = new Image();
+        thumbnail.width = "50";
+        thumbnail.height = "50";
+        event.target.insertAdjacentElement("afterend", thumbnail);
+        var demoImage = document.querySelector("img");
+        var file = document.querySelector("input[type=file]").files[0];
+        var reader = new FileReader();
+        reader.onload = function () {
+          // console.log(event.target)
+          // demoImage.src = reader.result;
+          thumbnail.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+        // console.log(file)
+      }
+    </script>
+  </body>
+</html>
